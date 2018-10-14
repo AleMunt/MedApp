@@ -23,9 +23,9 @@ public class HistoryTest extends AppCompatActivity {
         symptoms.add("Cough");
         symptoms.add("Cold");
         ArrayList<Medication> medications=new ArrayList<>();
-        medications.add(new Medication("med",1,1,true));
-        medications.add(new Medication("asasdasd",1,1,true));
-        medications.add(new Medication("sdfsdf",1,1,true));
+        medications.add(new Medication("med",1));
+        medications.add(new Medication("asasdasd",1));
+        medications.add(new Medication("sdfsdf",1));
         days.add(new History("day1",1,symptoms,medications));
         rvAdapter=new RVAdapter(days);
         rv.setAdapter(rvAdapter);
