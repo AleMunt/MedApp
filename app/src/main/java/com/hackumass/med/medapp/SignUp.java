@@ -88,7 +88,7 @@ public class SignUp extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 else
                 {
-                    Intent intent = new Intent(SignUp.this, Home2.class);
+                    Intent intent = new Intent(SignUp.this, Home3.class);
                     intent.putExtra("email",email);
                     intent.putExtra("password",password);
                     intent.putExtra("age",age);

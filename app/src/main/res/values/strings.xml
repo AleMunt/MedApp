@@ -267,4 +267,43 @@
         <item>week</item>
         <item>day</item>
     </string-array>
+    <string-array name="symptoms">
+        <item>Nausea</item>
+    <item>Anxiety</item>
+    <item>Fatigue</item>
+    <item>Depression</item>
+    <item>Stomach cramps</item>
+    <item>Diarrhea</item>
+    <item>Stomach Pain</item>
+    <item>Dizziness</item>
+    <item>Migraine</item>
+    <item>Abdominal pain</item>
+    <item>Constipation</item>
+    <item>Headache</item>
+    <item>Neck pain</item>
+    <item>Weakness</item>
+    <item>Fatigue and tiredness</item>
+    <item>Back pain</item>
+    <item>Insomnia</item>
+    <item>Muscle pain</item>
+    <item>Shoulder pain</item>
+    <item>Bloating</item>
+    <item>Dull</item>
+    <item>Sore throat</item>
+    <item>Shortness of breath</item>
+    <item>Chest pain</item>
+    <item>Irritability</item>
+    <item>Brain fog</item>
+    <item>Knee pain</item>
+    <item>Wrist pain</item>
+    <item>Hip pain</item>
+    <item>Joint pain</item>
+    <item>Vomiting</item>
+    <item>Chronic pain</item>
+    <item>Hand pain</item>
+    <item>Foot pain</item>
+    <item>Difficulty concentrating</item>
+    <item>Lower Back Pain</item>
+    <item>Leg pain</item>
+</string-array>
 </resources>
