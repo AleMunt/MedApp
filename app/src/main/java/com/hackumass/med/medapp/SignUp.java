@@ -1,5 +1,6 @@
 package com.hackumass.med.medapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ public class SignUp extends AppCompatActivity {
 
     TextView emailEditText;
     TextView passEditText;
+    TextView ageEditText;
     RadioGroup sexGroup;
     Button conditionsButton;
     Button medicationsButton;
@@ -84,15 +86,44 @@ public class SignUp extends AppCompatActivity {
                 if(!a.isEmpty())
                     Toast.makeText(SignUp.this, a,
                             Toast.LENGTH_LONG).show();
+                else
+                {
+                    Intent intent = new Intent(SignUp.this, Home2.class);
+                    intent.putExtra("email",email);
+                    intent.putExtra("password",password);
+                    intent.putExtra("age",age);
+                    intent.putExtra("sex",sex);
+                    intent.putExtra("smoke",smoke);
+                    intent.putExtra("alcohol",alcohol);
+                    intent.putExtra("lifestyle",lifestyle);
+                    intent.putExtra("pain",painLevel);
+                    String medicationString="";
+                    if (medications.size()>0) {
+                        for (String medication : medications)
+                            medicationString += medication+",";
+                        medicationString = medicationString.substring(0, medicationString.length() - 1);
+                    }
+                    String conditionString="";
+                    if (conditions.size()>0) {
+                        for (String condition : conditions)
+                            conditionString += condition+",";
+                        conditionString = conditionString.substring(0, conditionString.length() - 1);
+                    }
+                    intent.putExtra("conditions",conditionString);
+                    intent.putExtra("medications",medicationString);
+                    startActivity(intent);
+                }
             }
         });
+        ageEditText=findViewById(R.id.age);
     }
     String email;
     String password;
-    String sex;
+    int age;
+    int sex;
     int smoke;
     int alcohol;
-    String lifestyle;
+    int lifestyle;
     int painLevel;
     public String RegistrationCheck()
     {
@@ -104,10 +135,27 @@ public class SignUp extends AppCompatActivity {
             password=passEditText.getText().toString();
         else
             return "You must enter a password with 6 characters to continue";
+        if(passEditText.getText().toString().length()>5)
+            password=passEditText.getText().toString();
+        else
+            return "You must enter a password with 6 characters to continue";
+        if(ageEditText.getText().toString().length()<3) {
+            int possibleAge = Integer.valueOf(ageEditText.getText().toString());
+            if(possibleAge<120)
+                age=possibleAge;
+            else
+                return "Enter an age under 120 years";
+        }
+        else
+            return "You must an age to continue";
         if (sexGroup.getCheckedRadioButtonId()!=-1) {
             int id=sexGroup.getCheckedRadioButtonId();
             RadioButton a = findViewById(id);
-            sex=a.getText().toString();
+            sex=2;
+            if(a.getText().toString().startsWith("M"))
+                sex=0;
+            else if (a.getText().toString().startsWith("F"))
+                sex=1;
         }
         else
             return "You must choose a sex to continue";
@@ -132,7 +180,11 @@ public class SignUp extends AppCompatActivity {
         if (lifestyleGroup.getCheckedRadioButtonId()!=-1) {
             int id=smokeGroup.getCheckedRadioButtonId();
             RadioButton a = findViewById(id);
-            lifestyle=a.getText().toString();
+            lifestyle=2;
+            if(a.getText().toString().startsWith("A"))
+                sex=0;
+            else if (a.getText().toString().startsWith("M"))
+                sex=1;
         }
         else
             return "You must select a lifestyle to continue";
